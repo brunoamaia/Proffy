@@ -1,0 +1,40 @@
+.textarea-block {
+    position: relative;
+}
+
+.textarea-block + .textarea-block {
+    margin-top: 1.4rem;
+}
+
+.textarea-block label {
+    font-size: 1.4rem;
+}
+
+.textarea-block textarea {
+    width: 100%;
+    height: 16rem;
+    min-height: 10rem;
+    margin-top: 0.8rem;
+    border-radius: 0.8rem;
+    background: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0;
+    resize: vertical;
+    padding: 1.2rem 1.6rem;
+    font: 1.6rem Archivo;
+}
+
+/* focus-within - se tiver "focus" on input, ele estiliza a "box" do input, e não o foco
+    after - insere algo depois do elemento (vai criar um pseudo elemento)
+ Vai fazer aparecer uma borda embaixo, quando selecionar a caixa
+*/
+.textarea-block:focus-within::after {
+    width: calc(100% - 3.2rem);
+    height: 3px;
+    content: '';
+    background-color: var(--color-primary-light);
+    position: absolute;
+    left: 1.6rem;
+    right: 1.6rem;
+    bottom: 7px;
+}
