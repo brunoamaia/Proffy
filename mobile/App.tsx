@@ -7,6 +7,7 @@ import { Poppins_400Regular, Poppins_600SemiBold } from '@expo-google-fonts/popp
 
 
 import Landing from './src/pages/Landing';
+import AppStack from './src/routes/App.Stack';
 
 
 export default function App() {
@@ -22,7 +23,7 @@ export default function App() {
 	} else {
 		return (
 			<>
-				<Landing />
+				<AppStack />
 				<StatusBar style="light" />
 			</>
 		);
