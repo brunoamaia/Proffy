@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ScrollView, Text, TextInput, View } from 'react-native';
 import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
-import { Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage'
+import { useFocusEffect } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 
 import api from '../../services/api';
 
@@ -30,6 +31,14 @@ function TeacherList() {
 			}
 		});
 	}
+
+	// Recarrega a tela toda vez que clicar na aba "favoritos"
+  // Faz esa estrutura por causa da navegação em abas
+  useFocusEffect(
+    React.useCallback(() => {
+      loadFavorites();
+    }, [])
+  )
 
 	// Mostrar/Ocultar os campos de busca (matéria, dia, horário)
 	const [ isFiltersVisible, setIsFilteersVisible ] = useState(false);
