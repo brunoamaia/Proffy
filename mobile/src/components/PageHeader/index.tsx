@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { View, Image, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';  // Como o botãp é um ícone, usa esse item que seixa "sem fundo"
@@ -11,9 +11,10 @@ import styles from './styles';
 
 interface PageHeaderProps {
   title: string;
+  headerRigth?: ReactNode;     // Recebe um elemento do React, qu é opcional
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ children, headerRigth, title}) => {
   const { navigate } = useNavigation()
   function handleGoBack(){
     navigate('Landing');
@@ -29,7 +30,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title }) => {
         <Image source={logoImg} resizeMode="contain" />
       </View>
 
-      <Text style={styles.title}> { title } </Text>
+      <View style={styles.header}>
+        <Text style={styles.title}> { title } </Text>
+        {headerRigth}
+      </View>
+      
+      {children}
     </View>
   );
 }
