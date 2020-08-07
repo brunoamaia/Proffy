@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0F0F7',
   },
 
+  teacherlist: {
+    marginTop: -60
+  }
+
 })
 
 export default styles;
